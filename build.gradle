@@ -6,7 +6,7 @@ plugins {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
+        languageVersion = JavaLanguageVersion.of(17.0.4.1)
         vendor = JvmVendorSpec.ADOPTIUM
     }
 }
@@ -14,8 +14,8 @@ java {
 
 group = 'gr.thegoodsideofe1'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
-targetCompatibility = '17'
+sourceCompatibility = '17.0.4.1'
+targetCompatibility = '17.0.4.1'
 
 repositories {
     mavenCentral()
