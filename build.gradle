@@ -4,6 +4,13 @@ plugins {
     id 'java'
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+        vendor = JvmVendorSpec.ADOPTIUM
+    }
+}
+
 
 group = 'gr.thegoodsideofe1'
 version = '0.0.1-SNAPSHOT'
@@ -34,5 +41,6 @@ tasks.named('test') {
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(17)
+        vendor = JvmVendorSpec.ADOPTIUM
     }
 }
