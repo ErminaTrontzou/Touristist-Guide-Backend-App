@@ -13,3 +13,6 @@ jobs:
       uses: gradle/gradle-build-action@v2
     - name: Run build with Gradle Wrapper
       run: ./gradlew build
+    - name: Build with Gradle
+      run: |
+         ./gradlew bootJar
