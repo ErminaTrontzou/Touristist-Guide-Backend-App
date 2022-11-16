@@ -19,7 +19,7 @@ jobs:
     - name: Ls the dir
       run: ls
     - name: Ls the dir
-      run: tree build
+      run: tree build /F
     - name: Upload Plugin jar
       uses: actions/upload-artifact@v3
       with:
