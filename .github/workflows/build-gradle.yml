@@ -16,3 +16,8 @@ jobs:
     - name: Build with Gradle
       run: |
          ./gradlew bootJar
+    - name: Upload Plugin jar
+      uses: actions/upload-artifact@v3
+      with:
+        path: /tourguide-back/build/libs/tourguide-*.jar ./
+
