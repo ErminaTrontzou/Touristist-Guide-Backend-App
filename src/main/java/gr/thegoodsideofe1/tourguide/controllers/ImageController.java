@@ -61,7 +61,7 @@ public class ImageController {
     @GetMapping("/getByTitle/{title}")
     public ResponseEntity<?> imageByTitle(@PathVariable String title,
     @RequestParam(value="page", defaultValue = "1") int page,
-    @RequestParam(value = "size", defaultValue = "20") int size) {
+    @RequestParam(value = "size", defaultValue = "8") int size) {
         Pageable paging = PageRequest.of(page, size);
         Page<Image> imagesPage = imageRepository.findAllImagesByTitle(title, paging);
 
