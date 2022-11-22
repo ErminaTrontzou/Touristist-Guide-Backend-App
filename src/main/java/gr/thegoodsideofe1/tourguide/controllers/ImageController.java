@@ -14,6 +14,9 @@ import okhttp3.MediaType;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -56,14 +59,18 @@ public class ImageController {
 
     @Transactional
     @GetMapping("/getByTitle/{title}")
-    public List<Image> imageByTitle(@PathVariable String title){
-        List<Image> imageResponse = imageService.getImageByTitle(title);
-        if(imageResponse.isEmpty()) {
-            if(getFlickr(title)){
-                imageResponse = imageService.getImageByTitle(title);
+    public ResponseEntity<?> imageByTitle(@PathVariable String title,
+    @RequestParam(value="page", defaultValue = "1") int page,
+    @RequestParam(value = "size", defaultValue = "20") int size) {
+        Pageable paging = PageRequest.of(page, size);
+        Page<Image> imagesPage = imageRepository.findAllImagesByTitle(title, paging);
+
+        if (imagesPage.getContent().isEmpty()) {
+            if (getFlickr(title)) {
+                imagesPage = imageService.getImageByTitle(title, paging);
             }
         }
-        return imageResponse;
+        return new ResponseEntity<>(imagesPage, HttpStatus.OK);
     }
 
     private boolean getFlickr(String title) {
