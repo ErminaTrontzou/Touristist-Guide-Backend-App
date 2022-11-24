@@ -1,0 +1,16 @@
+name: Run the Action on each commit
+on:
+  push:
+  
+jobs:
+  action-pull-request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Create pull request
+        uses: ErminaTrontzou/Touristist-Guide-Backend-App@v1 
+        with:
+          title: Automatic pull request
+          assignee: ${{ github.actor }}
+          get_diff: true
