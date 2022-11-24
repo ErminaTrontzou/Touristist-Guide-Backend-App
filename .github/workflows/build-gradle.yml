@@ -26,4 +26,9 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         path: build/libs/tourguide-0.0.1-SNAPSHOT.jar 
+    - name: Git log
+      uses: actions/checkout@v2
+      with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 2147483647
 
