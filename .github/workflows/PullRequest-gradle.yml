@@ -9,7 +9,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Create pull request
-        uses: ErminaTrontzou/Touristist-Guide-Backend-App@v1 
+        uses: ErminaTrontzou/Touristist-Guide-Backend-App@V7 
         with:
           title: Automatic pull request
           assignee: ${{ github.actor }}
