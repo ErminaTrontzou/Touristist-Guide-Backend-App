@@ -22,13 +22,14 @@ jobs:
       run: ls
     - name: Ls the dir
       run: tree build /F
+    - name: Create Log file
+      run: git log --pretty=format:"%cd %s" --grep="Completed" > gitlog.txt
+      shell: bash
     - name: Upload Plugin jar
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v9
       with:
         path: build/libs/tourguide-0.0.1-SNAPSHOT.jar
-    - name: Create Log file
-      run: git log --pretty=format:"%cd %s" --grep="Completed" > Gitlog.txt
-      shell: bash
+              gitlog.txt
     - name: Ls the dir
       run: ls
     - name: Ls the dir
