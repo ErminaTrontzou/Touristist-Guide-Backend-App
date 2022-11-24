@@ -1,1 +1,1 @@
-Now test for the pull request action v1.1
+Now test for the pull request action v1.2
