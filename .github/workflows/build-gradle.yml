@@ -27,8 +27,12 @@ jobs:
       with:
         path: build/libs/tourguide-0.0.1-SNAPSHOT.jar
     - name: Create Log file
-      run: git log --pretty=format:"%cd %s" --grep="Completed" > changelog.txt
+      run: git log --pretty=format:"%cd %s" --grep="Completed" > Gitlog.txt
       shell: bash
+    - name: Ls the dir
+      run: ls
+    - name: Ls the dir
+      run: tree build /F
        
 
 
