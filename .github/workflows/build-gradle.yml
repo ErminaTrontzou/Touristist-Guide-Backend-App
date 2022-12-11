@@ -18,24 +18,15 @@ jobs:
     - name: Build with Gradle
       run: |
          ./gradlew bootJar
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          draft: false
-          prerelease: false
     - name: Upload jar
-      uses: actions/upload-release-asset@v1
-  
+      run: |
+          echo "done!"
+    - uses: "marvinpinto/action-automatic-releases@latest"
       with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: build/libs/tourguide-0.0.1-SNAPSHOT.jar
-        asset_name: currentRelease.zip
-        asset_content_type: application/zip
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: false
+          files: |
+            build/libs/tourguide-0.0.1-SNAPSHOT.jar
        
 
 
